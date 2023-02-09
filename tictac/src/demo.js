@@ -1,25 +1,32 @@
 import React, { useState } from "react";
 
-function Demosc(){
-const[value,setvalue]=useState(null);
-// function handleClick(){
-//     setvalue('x');
+function Demos({value,newvalue}){
+// const[value,setvalue]=useState(null);
+return <button type="button" onClick={newvalue} >{value}</button>
+// function handleTrigger() {
+// setvalue('x');
 // }
-return <button type="button" className="mybutton" onClick={handleClick}>{value}</button>
-function handleClick(){
-    setvalue('X');
-}
-}
+} 
 
 export default function Demo(){
+    const [xIsNext, setXIsNext] = useState(true);
+    const[Demoss,setDemos]=useState(Array(9).fill(null));
+    function handleClick(i){
+        const x=Demoss.slice();
+        if(xIsNext){
+            x[i]='x';
+        }
+        else{
+            x[i]='o';
+        }
+        setDemos(x);
+        setXIsNext(!xIsNext);
+    }
     return(
         <div>
-            <h1>hshs</h1>
-        <Demosc value={2} />
-        <Demosc value={3} />
-        <Demosc value={4} />
-        <Demosc value={4} />
-
+           
+        <Demos value={Demoss[0]} newvalue={()=>handleClick(0)}/>
+        <Demos value={Demoss[1]} newvalue={()=>handleClick(1)}/>
         </div>
        
     )
