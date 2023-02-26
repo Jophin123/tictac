@@ -12,7 +12,7 @@ function Singletile({value,onTileclik}){
 
   export default function App(){
     const[squares,setsquares]=useState(Array(9).fill(null));
-    
+   
     const[xIn,setxIn]=useState(true);
     function handleClick(i){
       if (calculateWinner(squares) || squares[i]) {
@@ -31,14 +31,13 @@ function Singletile({value,onTileclik}){
     setxIn(!xIn);
 
     }
-    function resetClick(newLoc){
+    function resetClick(){
+      let set=squares.slice();
       setsquares(
-        newLoc=''
+        set=''
         
-     )
-     
-      
-     
+     )  
+     window.location.reload(false); 
     }
     
     const winner = calculateWinner(squares);
@@ -50,7 +49,7 @@ function Singletile({value,onTileclik}){
     }
     return (
     <div className="App">
-        <h1>Just play</h1>
+        <h1>Just play Tictac</h1>
         <div className="status"><h1>{status}</h1></div>
       <div className='first'>
         <Singletile value={squares[0]} onTileclik={()=>handleClick(0)} />
